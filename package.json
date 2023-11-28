@@ -1,0 +1,19 @@
+{
+  "name": "api_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sulistiyah/PressTI.git"
+  },
+  "author": "Sulis Tiyah",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sulistiyah/PressTI/issues"
+  },
+  "homepage": "https://github.com/sulistiyah/PressTI#readme"
+}
