@@ -20,6 +20,8 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelizeDatabase = sequelizeDB;
 
+
+db.admin = require("./admin_model.js")(sequelizeDB, Sequelize)
 db.programStudi = require("./program_studi_model.js")(sequelizeDB, Sequelize);
 db.kelas = require("./kelas_model.js")(sequelizeDB, Sequelize)
 db.matkul = require("./mata_kuliah_model.js")(sequelizeDB, Sequelize)

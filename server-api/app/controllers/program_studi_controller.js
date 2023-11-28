@@ -155,3 +155,37 @@ exports.delete = (req, res) => {
     });
 };
 
+//membuatd dan menyimpan data kelas ke database
+exports.create = (req, res) => {
+  // Validate request
+  if (!req.body.kelas) {
+    res.status(400).send({
+      statusCode : 400,
+      message: "Content can not be empty!"
+    });
+    return;
+  }
+
+  //membuat data kelas
+  const kelas = {
+    kodeKelas: req.body.kodeKelas,
+    kelas: req.body.kelas
+  };
+
+  //menyimpan data kelas kedalam database
+  Kelas.create(kelas)
+    .then(data => {
+      res.status(200).send({
+        statusCode : 200,
+        message : "Success Create Data Class",
+        data : data
+      });
+    })
+    .catch(err => {
+      res.status(500).send({
+      statusCode : 500,
+      message:
+         err.message || "Some error occurred while creating the Class."
+      });
+    });
+};

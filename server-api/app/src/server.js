@@ -1,4 +1,3 @@
-import express from 'express'
 const express = require('express')
 const dotenv = require('dotenv')
 // const path = require('path')
@@ -54,6 +53,7 @@ db.sequelizeDatabase.sync()
     })
 
     //Pemanggilan masing-masing route
+    require("../routes/admin_route.js")(app)
     require("../routes/program_studi_route")(app)
     require("../routes/kelas_route")(app)
     require("../routes/mata_kuliah_route.js")(app)
