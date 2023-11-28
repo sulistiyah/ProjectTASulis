@@ -1,0 +1,8 @@
+/server-api/node_modules
+/server-api/.env.sample
+
+
+/server-ui/node_modules
+/server-ui/.env.sample
+
+.env

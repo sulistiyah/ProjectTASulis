@@ -1,0 +1,2372 @@
+{
+    "openapi": "3.0.2",
+      "info":{
+        "title": "API Spec Mahasiswa",
+        "version": "1",
+        "description": "Dokumentasi API Spec Mahasiswa - Project Tugas Akhir Sulis Tiyah",
+        "contact": {
+            "name": "Sulis Tiyah",
+            "email": "sulistyhm.03@gmail.com",
+            "url":"https://github.com/sulistiyah/ProjectTASulis.git"
+        },
+        "license": {
+            "name": "Politeknik Negeri Padang",
+            "url": "https://www.pnp.ac.id/"
+        }
+    },
+    "servers": [
+      {
+        "url": "http://localhost:8080/api/mahasiswa/"
+      }
+    ],
+    "paths": {
+      "/program_studi":{
+        "get": {
+            "tags": ["Point"],
+            "summary": "Get All Program Studi",
+            "description": "Get All Active Program Studi Default",
+            "responses": {
+              "200":{
+                "description": "Succes Get Program Studi",
+                "content": {
+                  "application/json":{
+                    "schema":{
+                      "$ref": "#/components/schemas/ProgramStudi"
+                    },
+                    "example": {
+                        "statusCode" : "200",
+                        "message" : "Success Get Data Program Studi",
+                        "data" : [
+                            {
+                                "id" : "1",
+                                "kodeProdi" : "PS1",
+                                "programStudi": "Teknik Komputer"
+                            },
+                            {
+                                "id" : "2",
+                                "kodeProdi" : "PS2",
+                                "programStudi": "Manajemen Informatika"
+                            },
+                            {
+                                "id" : "3",
+                                "kodeProdi" : "PS3",
+                                "programStudi": "Teknologi Rekayasa Perangkat Lunak"
+                            }
+                        ]                        
+                    }
+                  }
+                }
+              },
+              "404" : {
+                "description":"Failed Get Data Program Study",
+                "content":{
+                  "application/json":{
+                    "schema":{
+                      "type": "object",
+                      "properties":{
+                        "message":{
+                          "type":"boolean"
+                        }
+                      }
+                    },
+                    "example": {
+                        "statusCode" : "404",
+                        "message": "Failed Get Data Program Study"                   
+                    }
+                  }
+                }
+            }
+            }
+        }
+      },
+      "/program_studi/:id":{
+        "get": {
+            "tags": ["Point"],
+            "summary": "Get Program Studi By Id",
+            "description": "Get Active Program Study By Id",
+            "parameters": [
+              {
+                "$ref": "#/components/parameters/GetProgramStudi-id"
+              }
+            ],
+            "responses": {
+              "200":{
+                "description": "Succes Get Program Studi",
+                "content": {
+                  "application/json":{
+                    "schema":{
+                      "$ref": "#/components/schemas/ProgramStudi"
+                    },
+                    "examples": {
+                      "1" :{
+                        "value":{
+                          "statusCode" : "200",
+                          "message" : "Success Get Data Program Studi By Id",
+                          "data" : {
+                            "id" : "1",
+                            "kodeProdi" : "PS1",
+                            "programStudi" : "Teknik Komputer",
+                            "kelas" : [
+                              {
+                                  "id" : "1",
+                                  "kodeKelas" : "TK-IA",
+                                  "kelas": "Teknik Komputer I A"
+                              },
+                              {
+                                  "id" : "2",
+                                  "kodeKelas" : "TK-IB",
+                                  "kelas": "Teknik Komputer I B"
+                              },
+                              {
+                                  "id" : "3",
+                                  "kodeKelas" : "TK-IIA",
+                                  "kelas": "Teknik Komputer II A"
+                              },
+                              {
+                                  "id" : "4",
+                                  "kodeKelas" : "TK-IIB",
+                                  "kelas": "Teknik Komputer II B"
+                              },
+                              {
+                                  "id" : "5",
+                                  "kodeKelas" : "TK-IIIA",
+                                  "kelas": "Teknik Komputer III A"
+                              },
+                              {
+                                  "id" : "6",
+                                  "kodeKelas" : "TK-IIIB",
+                                  "kelas": "Teknik Komputer III B"
+                              }          
+                            ]
+                          }
+                        }
+                      },
+                      "2" :{
+                          "value":{
+                            "statusCode" : "200",
+                            "message" : "Success Get Data Program Studi By Id",
+                            "data" : {
+                              "id" : "2",
+                              "kodeProdi" : "PS2",
+                              "programStudi" : "Manajemen Informatika",
+                              "kelas" : [
+                                {
+                                  "id" : "7",
+                                  "kodeKelas" : "MI-IA",
+                                  "kelas": "Manajemen Informatika I A"
+                                },
+                                {
+                                  "id" : "8",
+                                  "kodeKelas" : "MI-IB",
+                                  "kelas": "Manajemen Informatika I B"
+                                },
+                                {
+                                  "id" : "9",
+                                  "kodeKelas" : "MI-IC",
+                                  "kelas": "Manajemen Informatika I C"
+                                },
+                                {
+                                  "id" : "10",
+                                  "kodeKelas" : "MI-IIA",
+                                  "kelas": "Manajemen Informatika II A"
+                                },
+                                {
+                                  "id" : "11",
+                                  "kodeKelas" : "MI-IIB",
+                                  "kelas": "Manajemen Informatika II B"
+                                },
+                                {
+                                  "id" : "12",
+                                  "kodeKelas" : "MI-IIC",
+                                  "kelas": "Manajemen Informatika II C"
+                                },
+                                {
+                                  "id" : "13",
+                                  "kodeKelas" : "MI-IIIA",
+                                  "kelas": "Manajemen Informatika III A"
+                                },
+                                {
+                                  "id" : "14",
+                                  "kodeKelas" : "MI-IIIB",
+                                  "kelas": "Manajemen Informatika III B"
+                                },
+                                {
+                                  "id" : "15",
+                                  "kodeKelas" : "MI-IIIC",
+                                  "kelas": "Manajemen Informatika III C"
+                                }                          
+                              ]
+                            }
+                          }
+                      },
+                      "3" :{
+                          "value":{
+                            "statusCode" : "200",
+                            "message" : "Success Get Data Program Studi By Id",
+                            "data" : {
+                              "id" : "3",
+                              "kodeProdi" : "PS3",
+                              "programStudi" : "Teknologi Rekayasa Perangkat Lunak",
+                              "kelas" : [
+                                {
+                                  "id" : "16",
+                                  "kodeKelas" : "TRPL-IA",
+                                  "kelas": "Teknologi Rekayasa Perangkat Lunak I A"
+                                },
+                                {
+                                  "id" : "17",
+                                  "kodeKelas" : "TRPL-IB",
+                                  "kelas": "Teknologi Rekayasa Perangkat Lunak I B"
+                                },
+                                {
+                                  "id" : "18",
+                                  "kodeKelas" : "TRPL-IC",
+                                  "kelas": "Teknologi Rekayasa Perangkat Lunak I C"
+                                },
+                                {
+                                  "id" : "19",
+                                  "kodeKelas" : "TRPL-ID",
+                                  "kelas": "Teknologi Rekayasa Perangkat Lunak I D"
+                                },
+                                {
+                                  "id" : "20",
+                                  "kodeKelas" : "TRPL-IIA",
+                                  "kelas": "Teknologi Rekayasa Perangkat Lunak II A"
+                                },
+                                {
+                                  "id" : "21",
+                                  "kodeKelas" : "TRPL-IIB",
+                                  "kelas": "Teknologi Rekayasa Perangkat Lunak II B"
+                                },
+                                {
+                                  "id" : "22",
+                                  "kodeKelas" : "TRPL-IIC",
+                                  "kelas": "Teknologi Rekayasa Perangkat Lunak II C"
+                                },  
+                                {
+                                  "id" : "23",
+                                  "kodeKelas" : "TRPL-IID",
+                                  "kelas": "Teknologi Rekayasa Perangkat Lunak II D"
+                                },  
+                                {
+                                  "id" : "24",
+                                  "kodeKelas" : "TRPL-IIIA",
+                                  "kelas": "Teknologi Rekayasa Perangkat Lunak III A"
+                                },  
+                                {
+                                  "id" : "25",
+                                  "kodeKelas" : "TRPL-IIIB",
+                                  "kelas": "Teknologi Rekayasa Perangkat Lunak III B"
+                                },  
+                                {
+                                  "id" : "26",
+                                  "kodeKelas" : "TRPL-IIIC",
+                                  "kelas": "Teknologi Rekayasa Perangkat Lunak III C"
+                                },  
+                                {
+                                  "id" : "27",
+                                  "kodeKelas" : "TRPL-IVA",
+                                  "kelas": "Teknologi Rekayasa Perangkat Lunak IV A"
+                                },
+                                {
+                                  "id" : "28",
+                                  "kodeKelas" : "TRPL-IVB",
+                                  "kelas": "Teknologi Rekayasa Perangkat Lunak IV B"
+                                },
+                                {
+                                  "id" : "29",
+                                  "kodeKelas" : "TRPL-IVC",
+                                  "kelas": "Teknologi Rekayasa Perangkat Lunak IV C"
+                                }
+                              ]
+                            }
+                          }
+                      }
+                    }
+                  }
+                }
+              },
+              "404" : {
+                "description":"Failed Get Data Program Studi By Id",
+                "content":{
+                  "application/json":{
+                    "schema":{
+                      "type": "object",
+                      "properties":{
+                        "message":{
+                          "type":"boolean"
+                        }
+                      }
+                    },
+                    "example": {
+                        "statusCode" : "404",
+                        "message": "Cannot Find Program Studi With Id"                   
+                    }
+                  }
+                }
+              },
+              "500" : {
+                "description": "Error Retrieving Program Studi",
+                "content": {
+                  "application/json" : {
+                    "schema" : {
+                      "type": "object",
+                      "properties": {
+                        "message" : {
+                          "type": "boolean"
+                        }
+                      }
+                    },
+                    "example" : {
+                      "statusCode" : "500",
+                      "message" : "Error Retrieving Program Studi With ID"
+                    }
+                  }
+                }
+              }
+            }
+        }
+      },
+      "/kelas":{
+        "get": {
+            "tags": ["Point"],
+            "summary": "Get All Class",
+            "description": "Get All Active Class Default",
+            "responses": {
+              "200":{
+                "description": "Succes Get Class",
+                "content": {
+                  "application/json":{
+                    "schema":{
+                      "$ref": "#/components/schemas/Kelas"
+                    },
+                    "example": {
+                        "statusCode" : "200",
+                        "message" : "Success Get Data Class",
+                        "data" : [
+                          {
+                            "id" : "1",
+                            "kodeKelas" : "TK-IA",
+                            "kelas": "Teknik Komputer I A"
+                          },
+                          {
+                              "id" : "2",
+                              "kodeKelas" : "TK-IB",
+                              "kelas": "Teknik Komputer I B"
+                          },
+                          {
+                              "id" : "3",
+                              "kodeKelas" : "TK-IIA",
+                              "kelas": "Teknik Komputer II A"
+                          },
+                          {
+                              "id" : "4",
+                              "kodeKelas" : "TK-IIB",
+                              "kelas": "Teknik Komputer II B"
+                          },
+                          {
+                              "id" : "5",
+                              "kodeKelas" : "TK-IIIA",
+                              "kelas": "Teknik Komputer III A"
+                          },
+                          {
+                              "id" : "6",
+                              "kodeKelas" : "TK-IIIB",
+                              "kelas": "Teknik Komputer III B"
+                          },
+                          {
+                            "id" : "7",
+                            "kodeKelas" : "MI-IA",
+                            "kelas": "Manajemen Informatika I A"
+                          },
+                          {
+                            "id" : "8",
+                            "kodeKelas" : "MI-IB",
+                            "kelas": "Manajemen Informatika I B"
+                          },
+                          {
+                            "id" : "9",
+                            "kodeKelas" : "MI-IC",
+                            "kelas": "Manajemen Informatika I C"
+                          },
+                          {
+                            "id" : "10",
+                            "kodeKelas" : "MI-IIA",
+                            "kelas": "Manajemen Informatika II A"
+                          },
+                          {
+                            "id" : "11",
+                            "kodeKelas" : "MI-IIB",
+                            "kelas": "Manajemen Informatika II B"
+                          },
+                          {
+                            "id" : "12",
+                            "kodeKelas" : "MI-IIC",
+                            "kelas": "Manajemen Informatika II C"
+                          },
+                          {
+                            "id" : "13",
+                            "kodeKelas" : "MI-IIIA",
+                            "kelas": "Manajemen Informatika III A"
+                          },
+                          {
+                            "id" : "14",
+                            "kodeKelas" : "MI-IIIB",
+                            "kelas": "Manajemen Informatika III B"
+                          },
+                          {
+                            "id" : "15",
+                            "kodeKelas" : "MI-IIIC",
+                            "kelas": "Manajemen Informatika III C"
+                          },
+                          {
+                            "id" : "16",
+                            "kodeKelas" : "TRPL-IA",
+                            "kelas": "Teknologi Rekayasa Perangkat Lunak I A"
+                          },
+                          {
+                            "id" : "17",
+                            "kodeKelas" : "TRPL-IB",
+                            "kelas": "Teknologi Rekayasa Perangkat Lunak I B"
+                          },
+                          {
+                            "id" : "18",
+                            "kodeKelas" : "TRPL-IC",
+                            "kelas": "Teknologi Rekayasa Perangkat Lunak I C"
+                          },
+                          {
+                            "id" : "19",
+                            "kodeKelas" : "TRPL-ID",
+                            "kelas": "Teknologi Rekayasa Perangkat Lunak I D"
+                          },
+                          {
+                            "id" : "20",
+                            "kodeKelas" : "TRPL-IIA",
+                            "kelas": "Teknologi Rekayasa Perangkat Lunak II A"
+                          },
+                          {
+                            "id" : "21",
+                            "kodeKelas" : "TRPL-IIB",
+                            "kelas": "Teknologi Rekayasa Perangkat Lunak II B"
+                          },
+                          {
+                            "id" : "22",
+                            "kodeKelas" : "TRPL-IIC",
+                            "kelas": "Teknologi Rekayasa Perangkat Lunak II C"
+                          },  
+                          {
+                            "id" : "23",
+                            "kodeKelas" : "TRPL-IID",
+                            "kelas": "Teknologi Rekayasa Perangkat Lunak II D"
+                          },  
+                          {
+                            "id" : "24",
+                            "kodeKelas" : "TRPL-IIIA",
+                            "kelas": "Teknologi Rekayasa Perangkat Lunak III A"
+                          },  
+                          {
+                            "id" : "25",
+                            "kodeKelas" : "TRPL-IIIB",
+                            "kelas": "Teknologi Rekayasa Perangkat Lunak III B"
+                          },  
+                          {
+                            "id" : "26",
+                            "kodeKelas" : "TRPL-IIIC",
+                            "kelas": "Teknologi Rekayasa Perangkat Lunak III C"
+                          },  
+                          {
+                            "id" : "27",
+                            "kodeKelas" : "TRPL-IVA",
+                            "kelas": "Teknologi Rekayasa Perangkat Lunak IV A"
+                          },
+                          {
+                            "id" : "28",
+                            "kodeKelas" : "TRPL-IVB",
+                            "kelas": "Teknologi Rekayasa Perangkat Lunak IV B"
+                          },
+                          {
+                            "id" : "29",
+                            "kodeKelas" : "TRPL-IVC",
+                            "kelas": "Teknologi Rekayasa Perangkat Lunak IV C"
+                          }    
+                        ]                        
+                    }
+                  }
+                }
+              },
+              "404" : {
+                "description":"Failed Get Data Class",
+                "content":{
+                  "application/json":{
+                    "schema":{
+                      "type": "object",
+                      "properties":{
+                        "message":{
+                          "type":"boolean"
+                        }
+                      }
+                    },
+                    "example": {
+                        "statusCode" : "404",
+                        "message": "Failed Get Data Class"                   
+                    }
+                  }
+                }
+            }
+            }
+        }
+      },  
+      "/kelas/:id":{
+        "get": {
+            "tags": ["Point"],
+            "summary": "Get Class",
+            "description": "Get Active Class By Id",
+            "parameters": [
+              {
+                "$ref": "#/components/parameters/GetClass-id"
+              }
+            ],
+            "responses": {
+              "200" :{
+                "description": "Success Get Class By Id",
+                "content": {
+                  "application/json":{
+                    "schema":{
+                      "$ref": "#/components/schemas/Kelas"
+                    },
+                    "examples": {
+                      "1" :{
+                        "value":{
+                          "statusCode" : "200",
+                          "message" : "Success Get Data Class By Id",
+                          "data" : {
+                            "id" : "1",
+                            "kodeKelas" : "TK-IA",
+                            "kelas" : "Teknik Komputer I A",
+                            "programStudiId" : "1",
+                            "programStudi" : {
+                              "id" : "1",
+                              "kodeProdi" : "PS1",
+                              "programStudi" : "Teknik Komputer"
+                            }
+                          }                              
+                        }
+                      },
+                      "2" :{
+                        "value":{
+                          "statusCode" : "200",
+                          "message" : "Success Get Data Class By Id",
+                          "data" : {
+                            "id" : "2",
+                            "kodeKelas" : "TK-IB",
+                            "kelas" : "Teknik Komputer I B",
+                            "programStudiId" : "1",
+                            "programStudi" : {
+                              "id" : "1",
+                              "kodeProdi" : "PS1",
+                              "programStudi" : "Teknik Komputer"
+                            }
+                          }                              
+                        }
+                      },
+                      "3" :{
+                        "value":{
+                          "statusCode" : "200",
+                          "message" : "Success Get Data Class By Id",
+                          "data" : {
+                            "id" : "3",
+                            "kodeKelas" : "TK-IIA",
+                            "kelas" : "Teknik Komputer II A",
+                            "programStudiId" : "1",
+                            "programStudi" : {
+                              "id" : "1",
+                              "kodeProdi" : "PS1",
+                              "programStudi" : "Teknik Komputer"
+                            }
+                          }                              
+                        }
+                      },
+                      "4" :{
+                        "value":{
+                          "statusCode" : "200",
+                          "message" : "Success Get Data Class By Id",
+                          "data" : {
+                            "id" : "4",
+                            "kodeKelas" : "TK-IIB",
+                            "kelas" : "Teknik Komputer II B",
+                            "programStudiId" : "1",
+                            "programStudi" : {
+                              "id" : "1",
+                              "kodeProdi" : "PS1",
+                              "programStudi" : "Teknik Komputer"
+                            }
+                          }                              
+                        }
+                      },
+                      "5" :{
+                        "value":{
+                          "statusCode" : "200",
+                          "message" : "Success Get Data Class By Id",
+                          "data" : {
+                            "id" : "5",
+                            "kodeKelas" : "TK-IIIA",
+                            "kelas" : "Teknik Komputer III A",
+                            "programStudiId" : "1",
+                            "programStudi" : {
+                              "id" : "1",
+                              "kodeProdi" : "PS1",
+                              "programStudi" : "Teknik Komputer"
+                            }
+                          }                              
+                        }
+                      },
+                      "6" :{
+                        "value":{
+                          "statusCode" : "200",
+                          "message" : "Success Get Data Class By Id",
+                          "data" : {
+                            "id" : "6",
+                            "kodeKelas" : "TK-IIIB",
+                            "kelas" : "Teknik Komputer III B" ,
+                            "programStudiId" : "1",
+                            "programStudi" : {
+                              "id" : "1",
+                              "kodeProdi" : "PS1",
+                              "programStudi" : "Teknik Komputer"
+                            }
+                          }                              
+                        }
+                      },
+                      "7" :{
+                        "value":{
+                          "statusCode" : "200",
+                          "message" : "Success Get Data Class By Id",
+                          "data" : {
+                            "id" : "7",
+                            "kodeKelas" : "MI-IA",
+                            "kelas" : "Manajemen Informatika I A" ,
+                            "programStudiId" : "2",
+                            "programStudi" : {
+                              "id" : "2",
+                              "kodeProdi" : "PS2",
+                              "programStudi" : "Manajemen Informatika"
+                            }
+                          }                              
+                        }
+                      },
+                      "8" :{
+                        "value":{
+                          "statusCode" : "200",
+                          "message" : "Success Get Data Class By Id",
+                          "data" : {
+                            "id" : "8",
+                            "kodeKelas" : "MI-IB",
+                            "kelas" : "Manajemen Informatika I B" ,
+                            "programStudiId" : "2",
+                            "programStudi" : {
+                              "id" : "2",
+                              "kodeProdi" : "PS2",
+                              "programStudi" : "Manajemen Informatika"
+                            }
+                          }                              
+                        }
+                      },
+                      "9" :{
+                        "value":{
+                          "statusCode" : "200",
+                          "message" : "Success Get Data Class By Id",
+                          "data" : {
+                            "id" : "9",
+                            "kodeKelas" : "MI-IC",
+                            "kelas" : "Manajemen Informatika I C" ,
+                            "programStudiId" : "2",
+                            "programStudi" : {
+                              "id" : "2",
+                              "kodeProdi" : "PS2",
+                              "programStudi" : "Manajemen Informatika"
+                            }
+                          }                              
+                        }
+                      },
+                      "10" :{
+                        "value":{
+                          "statusCode" : "200",
+                          "message" : "Success Get Data Class By Id",
+                          "data" : {
+                            "id" : "10",
+                            "kodeKelas" : "MI-IIA",
+                            "kelas" : "Manajemen Informatika II A" ,
+                            "programStudiId" : "2",
+                            "programStudi" : {
+                              "id" : "2",
+                              "kodeProdi" : "PS2",
+                              "programStudi" : "Manajemen Informatika"
+                            }
+                          }                              
+                        }
+                      },
+                      "11" :{
+                        "value":{
+                          "statusCode" : "200",
+                          "message" : "Success Get Data Class By Id",
+                          "data" : {
+                            "id" : "11",
+                            "kodeKelas" : "MI-IIB",
+                            "kelas" : "Manajemen Informatika II B" ,
+                            "programStudiId" : "2",
+                            "programStudi" : {
+                              "id" : "2",
+                              "kodeProdi" : "PS2",
+                              "programStudi" : "Manajemen Informatika"
+                            }
+                          }                              
+                        }
+                      },
+                      "12" :{
+                        "value":{
+                          "statusCode" : "200",
+                          "message" : "Success Get Data Class By Id",
+                          "data" : {
+                            "id" : "7",
+                            "kodeKelas" : "MI-IIC",
+                            "kelas" : "Manajemen Informatika II C" ,
+                            "programStudiId" : "2",
+                            "programStudi" : {
+                              "id" : "2",
+                              "kodeProdi" : "PS2",
+                              "programStudi" : "Manajemen Informatika"
+                            }
+                          }                              
+                        }
+                      },
+                      "13" :{
+                        "value":{
+                          "statusCode" : "200",
+                          "message" : "Success Get Data Class By Id",
+                          "data" : {
+                            "id" : "13",
+                            "kodeKelas" : "MI-IIIA",
+                            "kelas" : "Manajemen Informatika III A" ,
+                            "programStudiId" : "2",
+                            "programStudi" : {
+                              "id" : "2",
+                              "kodeProdi" : "PS2",
+                              "programStudi" : "Manajemen Informatika"
+                            }
+                          }                              
+                        }
+                      },
+                      "14" :{
+                        "value":{
+                          "statusCode" : "200",
+                          "message" : "Success Get Data Class By Id",
+                          "data" : {
+                            "id" : "7",
+                            "kodeKelas" : "MI-IIIB",
+                            "kelas" : "Manajemen Informatika III B" ,
+                            "programStudiId" : "2",
+                            "programStudi" : {
+                              "id" : "2",
+                              "kodeProdi" : "PS2",
+                              "programStudi" : "Manajemen Informatika"
+                            }
+                          }                              
+                        }
+                      },
+                      "15" :{
+                        "value":{
+                          "statusCode" : "200",
+                          "message" : "Success Get Data Class By Id",
+                          "data" : {
+                            "id" : "15",
+                            "kodeKelas" : "MI-IIIC",
+                            "kelas" : "Manajemen Informatika III C" ,
+                            "programStudiId" : "2",
+                            "programStudi" : {
+                              "id" : "2",
+                              "kodeProdi" : "PS2",
+                              "programStudi" : "Manajemen Informatika"
+                            }
+                          }                              
+                        }
+                      },
+                      "16" :{
+                        "value":{
+                          "statusCode" : "200",
+                          "message" : "Success Get Data Class By Id",
+                          "data" : {
+                            "id" : "16",
+                            "kodeKelas" : "TRPL-IA",
+                            "kelas" : "Teknologi Rekayasa Perangkat Lunak I A" ,
+                            "programStudiId" : "3",
+                            "programStudi" : {
+                              "id" : "3",
+                              "kodeProdi" : "PS3",
+                              "programStudi" : "Teknologi Rekayasa Perangkat Lunak"
+                            }
+                          }                              
+                        }
+                      },
+                      "17" :{
+                        "value":{
+                          "statusCode" : "200",
+                          "message" : "Success Get Data Class By Id",
+                          "data" : {
+                            "id" : "17",
+                            "kodeKelas" : "TRPL-IB",
+                            "kelas" : "Teknologi Rekayasa Perangkat Lunak I B" ,
+                            "programStudiId" : "3",
+                            "programStudi" : {
+                              "id" : "3",
+                              "kodeProdi" : "PS3",
+                              "programStudi" : "Teknologi Rekayasa Perangkat Lunak"
+                            }
+                          }                              
+                        }
+                      },
+                      "18" :{
+                        "value":{
+                          "statusCode" : "200",
+                          "message" : "Success Get Data Class By Id",
+                          "data" : {
+                            "id" : "18",
+                            "kodeKelas" : "TRPL-IC",
+                            "kelas" : "Teknologi Rekayasa Perangkat Lunak I C" ,
+                            "programStudiId" : "3",
+                            "programStudi" : {
+                              "id" : "3",
+                              "kodeProdi" : "PS3",
+                              "programStudi" : "Teknologi Rekayasa Perangkat Lunak"
+                            }
+                          }                              
+                        }
+                      },
+                      "19" :{
+                        "value":{
+                          "statusCode" : "200",
+                          "message" : "Success Get Data Class By Id",
+                          "data" : {
+                            "id" : "19",
+                            "kodeKelas" : "TRPL-ID",
+                            "kelas" : "Teknologi Rekayasa Perangkat Lunak I D" ,
+                            "programStudiId" : "3",
+                            "programStudi" : {
+                              "id" : "3",
+                              "kodeProdi" : "PS3",
+                              "programStudi" : "Teknologi Rekayasa Perangkat Lunak"
+                            }
+                          }                              
+                        }
+                      },
+                      "20" :{
+                        "value":{
+                          "statusCode" : "200",
+                          "message" : "Success Get Data Class By Id",
+                          "data" : {
+                            "id" : "20",
+                            "kodeKelas" : "TRPL-IIA",
+                            "kelas" : "Teknologi Rekayasa Perangkat Lunak II A" ,
+                            "programStudiId" : "3",
+                            "programStudi" : {
+                              "id" : "3",
+                              "kodeProdi" : "PS3",
+                              "programStudi" : "Teknologi Rekayasa Perangkat Lunak"
+                            }
+                          }                              
+                        }
+                      },
+                      "21" :{
+                        "value":{
+                          "statusCode" : "200",
+                          "message" : "Success Get Data Class By Id",
+                          "data" : {
+                            "id" : "21",
+                            "kodeKelas" : "TRPL-IIB",
+                            "kelas" : "Teknologi Rekayasa Perangkat Lunak II B" ,
+                            "programStudiId" : "3",
+                            "programStudi" : {
+                              "id" : "3",
+                              "kodeProdi" : "PS3",
+                              "programStudi" : "Teknologi Rekayasa Perangkat Lunak"
+                            }
+                          }                              
+                        }
+                      },
+                      "22" :{
+                        "value":{
+                          "statusCode" : "200",
+                          "message" : "Success Get Data Class By Id",
+                          "data" : {
+                            "id" : "22",
+                            "kodeKelas" : "TRPL-IIC",
+                            "kelas" : "Teknologi Rekayasa Perangkat Lunak II C" ,
+                            "programStudiId" : "3",
+                            "programStudi" : {
+                              "id" : "3",
+                              "kodeProdi" : "PS3",
+                              "programStudi" : "Teknologi Rekayasa Perangkat Lunak"
+                            }
+                          }                              
+                        }
+                      },
+                      "23" :{
+                        "value":{
+                          "statusCode" : "200",
+                          "message" : "Success Get Data Class By Id",
+                          "data" : {
+                            "id" : "23",
+                            "kodeKelas" : "TRPL-IID",
+                            "kelas" : "Teknologi Rekayasa Perangkat Lunak II D" ,
+                            "programStudiId" : "3",
+                            "programStudi" : {
+                              "id" : "3",
+                              "kodeProdi" : "PS3",
+                              "programStudi" : "Teknologi Rekayasa Perangkat Lunak"
+                            }
+                          }                              
+                        }
+                      },
+                      "24" :{
+                        "value":{
+                          "statusCode" : "200",
+                          "message" : "Success Get Data Class By Id",
+                          "data" : {
+                            "id" : "24",
+                            "kodeKelas" : "TRPL-IIIA",
+                            "kelas" : "Teknologi Rekayasa Perangkat Lunak III A" ,
+                            "programStudiId" : "3",
+                            "programStudi" : {
+                              "id" : "3",
+                              "kodeProdi" : "PS3",
+                              "programStudi" : "Teknologi Rekayasa Perangkat Lunak"
+                            }
+                          }                              
+                        }
+                      },
+                      "25" :{
+                        "value":{
+                          "statusCode" : "200",
+                          "message" : "Success Get Data Class By Id",
+                          "data" : {
+                            "id" : "25",
+                            "kodeKelas" : "TRPL-IIIB",
+                            "kelas" : "Teknologi Rekayasa Perangkat Lunak III B" ,
+                            "programStudiId" : "3",
+                            "programStudi" : {
+                              "id" : "3",
+                              "kodeProdi" : "PS3",
+                              "programStudi" : "Teknologi Rekayasa Perangkat Lunak"
+                            }
+                          }                              
+                        }
+                      },
+                      "26" :{
+                        "value":{
+                          "statusCode" : "200",
+                          "message" : "Success Get Data Class By Id",
+                          "data" : {
+                            "id" : "26",
+                            "kodeKelas" : "TRPL-IIIC",
+                            "kelas" : "Teknologi Rekayasa Perangkat Lunak III C" ,
+                            "programStudiId" : "3",
+                            "programStudi" : {
+                              "id" : "3",
+                              "kodeProdi" : "PS3",
+                              "programStudi" : "Teknologi Rekayasa Perangkat Lunak"
+                            }
+                          }                              
+                        }
+                      },
+                      "27" :{
+                        "value":{
+                          "statusCode" : "200",
+                          "message" : "Success Get Data Class By Id",
+                          "data" : {
+                            "id" : "27",
+                            "kodeKelas" : "TRPL-IVA",
+                            "kelas" : "Teknologi Rekayasa Perangkat Lunak IV A" ,
+                            "programStudiId" : "3",
+                            "programStudi" : {
+                              "id" : "3",
+                              "kodeProdi" : "PS3",
+                              "programStudi" : "Teknologi Rekayasa Perangkat Lunak"
+                            }
+                          }                              
+                        }
+                      },
+                      "28" :{
+                        "value":{
+                          "statusCode" : "200",
+                          "message" : "Success Get Data Class By Id",
+                          "data" : {
+                            "id" : "28",
+                            "kodeKelas" : "TRPL-IVB",
+                            "kelas" : "Teknologi Rekayasa Perangkat Lunak IVB" ,
+                            "programStudiId" : "3",
+                            "programStudi" : {
+                              "id" : "3",
+                              "kodeProdi" : "PS3",
+                              "programStudi" : "Teknologi Rekayasa Perangkat Lunak"
+                            }
+                          }                              
+                        }
+                      },
+                      "29" :{
+                        "value":{
+                          "statusCode" : "200",
+                          "message" : "Success Get Data Class By Id",
+                          "data" : {
+                            "id" : "29",
+                            "kodeKelas" : "TRPL-IVC",
+                            "kelas" : "Teknologi Rekayasa Perangkat Lunak IV C" ,
+                            "programStudiId" : "3",
+                            "programStudi" : {
+                              "id" : "3",
+                              "kodeProdi" : "PS3",
+                              "programStudi" : "Teknologi Rekayasa Perangkat Lunak"
+                            }
+                          }                              
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "404" : {
+                "description":"Failed Get Data Class By Id",
+                "content":{
+                  "application/json":{
+                    "schema":{
+                      "type": "object",
+                      "properties":{
+                        "message":{
+                          "type":"boolean"
+                        }
+                      }
+                    },
+                    "example": {
+                        "statusCode" : "404",
+                        "message": "Cannot Find Class With Id"                   
+                    }
+                  }
+                }
+              },
+              "500" : {
+                "description": "Error Retrieving Class",
+                "content": {
+                  "application/json" : {
+                    "schema" : {
+                      "type": "object",
+                      "properties": {
+                        "message" : {
+                          "type": "boolean"
+                        }
+                      }
+                    },
+                    "example" : {
+                      "statusCode" : "500",
+                      "message" : "Error Retrieving Class With Id"
+                    }
+                  }
+                }
+              }
+            }
+        }  
+      }, 
+      "/register":{
+        "post": {
+          "security": [
+            {
+              "RegisterAuth":[]
+            }
+          ],
+          "tags": ["Register"],
+          "summary": "Create New Register",
+          "description": "Create New Register To Database",
+          "requestBody":{
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema":{
+                  "$ref": "#/components/schemas/RegisterParams"
+                },
+                "example": {
+                    "nim": "2001081002",
+                    "nama": "Sulis Tiyah",
+                    "programStudi": "Teknik Komputer",
+                    "kelas": "TK III B",
+                    "noTelepon" : "081292323052",
+                    "password": "12345678",
+                    "rePassword" : "12345678"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200" :{
+              "description": "Success Create Register",
+              "content": {
+                "application/json":{
+                  "schema":{
+                    "$ref": "#/components/schemas/Register"
+                  },
+                  "example": {
+                    "statusCode" : "200",
+                    "message" : "Registration Successful",
+                    "data" : {
+                        "id" : "1",
+                        "nim" : "2001081002",
+                        "nama" : "Sulis Tiyah",
+                        "programStudi" : {
+                          "id" : "1",
+                          "kodeProdi" : "PS1",
+                          "programStudi" : "Teknik Komputer"
+                        },
+                        "kelas" : {
+                          "id" : "6",
+                          "kodeKelas" : "TK-IIIB",
+                          "kelas" : "Teknik Komputer III B"
+                        },
+                        "no_telepon" : "081292323052",
+                        "password" : "12345678",
+                        "rePassword" : "12345678"
+                    }
+                  }
+                }
+              }
+            },
+            "404" : {
+                "description":"Failed Create Register",
+                "content":{
+                  "application/json":{
+                    "schema":{
+                      "type": "object",
+                      "properties":{
+                        "message":{
+                          "type":"boolean"
+                        }
+                      }
+                    },
+                    "example": {
+                        "statusCode" : "404",
+                        "message": "Failed Register"                   
+                    }
+                  }
+                }
+            },
+            "500" : {
+              "description":"Error Servers",
+              "content":{
+                "application/json":{
+                  "schema":{
+                    "type": "object",
+                    "properties":{
+                      "message":{
+                        "type":"boolean"
+                      }
+                    }
+                  },
+                  "example": {
+                      "statusCode" : "500",
+                      "message": "Some error occured while creating the user"                   
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/login": {
+        "post": {
+            "security": [
+              {
+                "LoginAuth":[]
+              }
+            ],
+            "tags": ["Login"],
+            "summary": "Login User",
+            "description": "Login User Mahasiswa",
+            "requestBody":{
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema":{
+                    "$ref": "#/components/schemas/LoginParams"
+                  },
+                  "example": {
+                      "nim": "2001081002",
+                      "password": "12345678"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "200" :{
+                "description": "Success Login User",
+                "content": {
+                  "application/json":{
+                    "schema":{
+                      "$ref": "#/components/schemas/Login"
+                    },
+                    "example": {
+                      "statusCode" : "200",
+                      "message" : "Login Successful",
+                      "data" : {
+                          "id" : "1",
+                          "nim" : "2001081002",
+                          "nama" : "Sulis Tiyah",
+                          "programStudi" : {
+                            "id" : "1",
+                            "kodeProdi" : "PS1",
+                            "programStudi" : "Teknik Komputer"
+                          },
+                          "kelas" : {
+                            "id" : "6",
+                            "kodeKelas" : "TK-IIIB",
+                            "kelas" : "Teknik Komputer III B"
+                          },
+                          "noTelepon" : "081292323052",
+                          "accessToken" : "abcdefghijklmnopqrstuvwxyz"
+                      }
+                    }
+                  }
+                }
+              },
+              "404" : {
+                  "description":"Failed Login User",
+                  "content":{
+                    "application/json":{
+                      "schema":{
+                        "type": "object",
+                        "properties":{
+                          "message":{
+                            "type":"boolean"
+                          }
+                        }
+                      },
+                      "example": {
+                          "statusCode" : "404",
+                          "message": "User Not Found !!!"                   
+                      }
+                    }
+                  }
+              },
+              "500" : {
+                "description":"Error Servers",
+                "content":{
+                  "application/json":{
+                    "schema":{
+                      "type": "object",
+                      "properties":{
+                        "message":{
+                          "type":"boolean"
+                        }
+                      }
+                    },
+                    "example": {
+                        "statusCode" : "500",
+                        "message": "Some error occurred while login the User."                 
+                    }
+                  }
+                }
+              }
+            }
+        } 
+      },
+      "/my_profile/:id":{
+        "get": {
+            "security": [
+              {
+                "MyProfileAuth":[]
+              }
+            ],
+            "tags": ["Profile"],
+            "summary": "Get My Profile",
+            "description": "Get My Profile By ID",
+            "parameters": [
+              {
+                "$ref": "#/components/parameters/GetMyProfile-ID"
+              }
+            ],
+            "responses": {
+              "200" :{
+                "description": "Success Get My Profile By ID",
+                "content": {
+                  "application/json":{
+                    "schema":{
+                      "$ref": "#/components/schemas/MyProfile"
+                    },
+                    "examples": {
+                        "1" :{
+                          "value":{
+                            "statusCode" : "200",
+                            "message" : "Success Get My Profile Class By ID",
+                            "data" : {
+                              "id" : "1",
+                              "nim" : "2001081002",
+                              "nama" : "Sulis Tiyah",
+                              "programStudi" : {
+                                "id" : "1",
+                                "kodeProdi" : "PS1",
+                                "programStudi" : "Teknik Komputer"
+                              },
+                              "kelas" : {
+                                "id" : "6",
+                                "kodeKelas" : "TK-IIIB",
+                                "kelas" : "Teknik Komputer III B"
+                              },
+                              "noTelepon" : "081292323052",
+                              "image" : "------------------"
+                              }
+                          }
+                        },
+                        "2" :{
+                          "value":{
+                            "statusCode" : "200",
+                            "message" : "Success Get My Profile Class By ID",
+                            "data" : {
+                              "id" : "2",
+                              "nim" : "2001082033",
+                              "nama" : "Aldo Spama Putra Suir",
+                              "programStudi" : {
+                                "id" : "1",
+                                "kodeProdi" : "PS1",
+                                "programStudi" : "Teknik Komputer"
+                              },
+                              "kelas" : {
+                                "id" : "6",
+                                "kodeKelas" : "TK-IIIB",
+                                "kelas" : "Teknik Komputer III B"
+                              },
+                              "noTelepon" : "081292323052",
+                              "image" : "------------------"
+                              }
+                          }
+                        },
+                        "3" :{
+                          "value":{
+                            "statusCode" : "200",
+                            "message" : "Success Get My Profile Class By ID",
+                            "data" : {
+                              "id" : "3",
+                              "nim" : "2001082011",
+                              "nama" : "Jawahiir Abdillah",
+                              "programStudi" : {
+                                "id" : "1",
+                                "kodeProdi" : "PS1",
+                                "programStudi" : "Teknik Komputer"
+                              },
+                              "kelas" : {
+                                "id" : "6",
+                                "kodeKelas" : "TK-IIIB",
+                                "kelas" : "Teknik Komputer III B"
+                              },
+                              "noTelepon" : "081292323052",
+                              "image" : "------------------"
+                              }
+                          }
+                        }
+                    }
+                  }
+                }
+              },
+              "404" : {
+                "description":"Failed Get My Profile",
+                "content":{
+                  "application/json":{
+                    "schema":{
+                      "type": "object",
+                      "properties":{
+                        "message":{
+                          "type":"boolean"
+                        }
+                      }
+                    },
+                    "example": {
+                        "statusCode" : "404",
+                        "message": "Cannot find My Profile with Id"                   
+                    }
+                  }
+                }
+              },
+              "500" : {
+                "description":"Error Servers",
+                "content":{
+                  "application/json":{
+                    "schema":{
+                      "type": "object",
+                      "properties":{
+                        "message":{
+                          "type":"boolean"
+                        }
+                      }
+                    },
+                    "example": {
+                        "statusCode" : "500",
+                        "message": "Error Retrieving My Profile with Id"                    
+                    }
+                  }
+                }
+              }
+            }
+        },
+        "put":{
+          "security": [
+            {
+              "MyProfileAuth":[]
+            }
+          ],
+          "tags": ["Profile"],
+          "summary": "Update My Profile",
+          "description": "Update My Profile By ID",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/EditProfil_ID"
+            }
+          ],
+          "requestBody":{
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema":{
+                  "$ref": "#/components/schemas/ChangePasswordParams"
+                },
+                "example": {
+                    "nim": "2001081002",
+                    "nama" : "Sulis Tiyah",
+                    "programStudi" : "1",
+                    "kelas" : "6",
+                    "noTelepon" : "081292323052"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200" :{
+              "description": "Success Update My Profile By ID",
+              "content": {
+                "application/json":{
+                  "schema":{
+                    "$ref": "#/components/schemas/EditProfilParams"
+                  },
+                  "examples": {
+                      "1" :{
+                        "value":{
+                          "statusCode" : "200",
+                          "message" : "Profile Update Successful",
+                          "data" : {
+                              "id" : "1",
+                              "nim" : "2001081002",
+                              "nama": "Sulis Tiyah",
+                              "programStudi" : {
+                                "id" : "1",
+                                "kodeProdi" : "PS1",
+                                "programStudi" : "Teknik Komputer"
+                              },
+                              "kelas" : {
+                                "id" : "6",
+                                "kodeKelas" : "TK-IIIB",
+                                "kelas" : "Teknik Komputer III B"
+                              },
+                              "noTelepon" : "081292323052"
+                          }
+                        }
+                      },
+                      "2" :{
+                        "value":{
+                          "statusCode" : "200",
+                          "message" : "Profile Update Successful",
+                          "data" : {
+                              "id" : "2",
+                              "nim" : "2001082033",
+                              "nama": "Aldo Spama Putra Suir",
+                              "programStudi" : {
+                                "id" : "1",
+                                "kodeProdi" : "PS1",
+                                "programStudi" : "Teknik Komputer"
+                              },
+                              "kelas" : {
+                                "id" : "6",
+                                "kodeKelas" : "TK-IIIB",
+                                "kelas" : "Teknik Komputer III B"
+                              },
+                              "noTelepon" : "081292323052"
+                          }
+                        }
+                      },"3" :{
+                        "value":{
+                          "statusCode" : "200",
+                          "message" : "Profile Update Successful",
+                          "data" : {
+                              "id" : "3",
+                              "nim" : "2001082011",
+                              "nama": "Jawahiir Abdillah",
+                              "programStudi" : {
+                                "id" : "1",
+                                "kodeProdi" : "PS1",
+                                "programStudi" : "Teknik Komputer"
+                              },
+                              "kelas" : {
+                                "id" : "6",
+                                "kodeKelas" : "TK-IIIB",
+                                "kelas" : "Teknik Komputer III B"
+                              },
+                              "noTelepon" : "081292323052"
+                          }
+                        }
+                      }
+                    }
+                }
+              }
+            },
+            "404" : {
+              "description":"Failed Update My Profile",
+              "content":{
+                "application/json":{
+                  "schema":{
+                    "type": "object",
+                    "properties":{
+                      "message":{
+                        "type":"boolean"
+                      }
+                    }
+                  },
+                  "example": {
+                    "statusCode" : "404",
+                    "message": "Cannot Update Profile With Id. Maybe profile was not found or req.body is empty"                   
+                  }
+                }
+              }
+            },
+            "500" : {
+              "description":"Error Servers",
+              "content":{
+                "application/json":{
+                  "schema":{
+                    "type": "object",
+                    "properties":{
+                      "message":{
+                        "type":"boolean"
+                      }
+                    }
+                  },
+                  "example": {
+                      "statusCode" : "500",
+                      "message": "Some error occurred while updating the User."                 
+                  }
+                }
+              }
+            }
+          }             
+        }
+      },
+      "/change_password/:id":{
+        "put": {
+          "security": [
+            {
+              "MyProfileAuth":[]
+            }
+          ],
+          "tags": ["Profile"],
+          "summary": "Change Password",
+          "description": "Change Password User",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/ChangePassword-Id"
+            }
+          ],
+          "requestBody":{
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema":{
+                  "$ref": "#/components/schemas/ChangePasswordParams"
+                },
+                "example": {
+                    "password": "12345678",
+                    "newPassword":"12345",
+                    "confirmPassword": "12345"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200" :{
+              "description": "Success Change Password User",
+              "content": {
+                "application/json":{
+                  "schema":{
+                    "$ref": "#/components/schemas/ChangePassword"
+                  },
+                  "example": {
+                    "statusCode" : "200",
+                    "message" : "Password Updated Successfully"
+                  }
+                }
+              }
+            },
+            "401" : {
+              "description":"Invalid Current Password",
+              "content":{
+                "application/json":{
+                  "schema":{
+                    "type": "object",
+                    "properties":{
+                      "message":{
+                        "type":"boolean"
+                      }
+                    }
+                  },
+                  "example": {
+                    "statusCode" : "401",
+                    "message": "Invalid Current Password"                   
+                  }
+                }
+              }
+            },
+            "404" : {
+                "description":"Failed Change Password",
+                "content":{
+                  "application/json":{
+                    "schema":{
+                      "type": "object",
+                      "properties":{
+                        "message":{
+                          "type":"boolean"
+                        }
+                      }
+                    },
+                    "example": {
+                      "statusCode" : "404",
+                      "message": "User with id not found"                   
+                    }
+                  }
+                }
+            },
+            "500" : {
+              "description":"Error Servers",
+              "content":{
+                "application/json":{
+                  "schema":{
+                    "type": "object",
+                    "properties":{
+                      "message":{
+                        "type":"boolean"
+                      }
+                    }
+                  },
+                  "example": {
+                    "statusCode" : "500",
+                    "message": "Some error occurred while retrieving the user"                   
+                  }
+                }
+              }
+            }            
+          }
+        }
+      },
+      "/change_avatar/:id":{
+        "put": {
+            "security": [
+              {
+                "MyProfileAuth":[]
+              }
+            ],
+            "tags": ["Profile"],
+            "summary": "Post My Avatar",
+            "description": "Post My Avatar",
+            "parameters": [
+              {
+                "$ref": "#/components/parameters/UpdateAvatar"
+              }
+            ],
+            "responses": {
+              "200" :{
+                "description": "Success Up My Avatar",
+                "content": {
+                  "application/json":{
+                    "schema":{
+                      "$ref": "#/components/schemas/MyAvatar"
+                    },
+                    "examples": {
+                        "1" :{
+                          "value":{
+                            "statusCode" : "200",
+                            "message" : "Success Change Avatar",
+                            "data" : { 
+                              "id" : "1",
+                              "nim" : "2001081002",
+                              "nama": "Sulis Tiyah",
+                              "image": "-----------"
+                            }
+                          }
+                        },
+                        "2" :{
+                          "value":{
+                            "statusCode" : "200",
+                            "message" : "Success Update Avatar",
+                            "data" : { 
+                              "id" : "2",
+                              "nim" : "2001082033",
+                              "nama": "Aldo Spama Putra Suir",
+                              "image": "-----------"
+                            }
+                          }
+                        },
+                        "3" :{
+                          "value":{
+                            "statusCode" : "200",
+                            "message" : "Success Update Avatar",
+                            "data" : { 
+                              "id" : "3",
+                              "nim" : "2001082011",
+                              "nama": "Jawahiir Abdillah",
+                              "image": "-----------"
+                            }
+                          }
+                        }
+                    }
+                  }
+                }
+              },
+              "404" : {
+                "description":"Failed Change Avatar",
+                "content":{
+                  "application/json":{
+                    "schema":{
+                      "type": "object",
+                      "properties":{
+                        "message":{
+                          "type":"boolean"
+                        }
+                      }
+                    },
+                    "example": {
+                      "statusCode" : "404",
+                      "message": "Failed Change Avatar"                   
+                    }
+                  }
+                }
+            },
+            "500" : {
+              "description":"Error Servers",
+              "content":{
+                "application/json":{
+                  "schema":{
+                    "type": "object",
+                    "properties":{
+                      "message":{
+                        "type":"boolean"
+                      }
+                    }
+                  },
+                  "example": {
+                    "statusCode" : "500",
+                    "message": "Some error occurred while updating the avatar."                   
+                  }
+                }
+              }
+            }     
+          }
+        }
+      },
+      "/set_presensi": {
+        "post": {
+            "security": [
+              {
+                "PerkuliahanAuth":[]
+              }
+            ],
+            "tags": ["Perkuliahan"],
+            "summary": "Set Presensi",
+            "description": "Set Presensi Mahasiswa",
+            "requestBody":{
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema":{
+                    "$ref": "#/components/schemas/SetPresensiParams"
+                  },
+                  "example": {
+                      "nim": "2001081002",
+                      "image": "------------"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "200" :{
+                "description": "Success Set Presensi",
+                "content": {
+                  "application/json":{
+                    "schema":{
+                      "$ref": "#/components/schemas/SetPresensi"
+                    },
+                    "example": {
+                      "message" : "Set Presensi Success",
+                      "data" : {
+                          "id" : "1",
+                          "nim" : "2001081002",
+                          "nama" : "Sulis Tiyah",
+                          "programStudi" : {
+                            "id" : "1",
+                            "kodeProdi" : "PS1",
+                            "programStudi" : "Teknik Komputer"
+                          },
+                          "kelas" : {
+                            "id" : "6",
+                            "kodeKelas" : "TK-IIIB",
+                            "kelas" : "Teknik Komputer III B"
+                          },
+                          "noTelepon" : "081292323052",
+                          "statusPresensi" : "hadir",
+                          "waktuPresensi" : "12:00",
+                          "tanggalPresensi" : "2023-11-11",
+                          "lokasiPresensi" : "latitude-longitude",
+                          "image":"------------"
+                      }
+                    }
+                  }
+                }
+              },
+              "404" : {
+                  "description":"Failed Set Presensi",
+                  "content":{
+                    "application/json":{
+                      "schema":{
+                        "type": "object",
+                        "properties":{
+                          "message":{
+                            "type":"boolean"
+                          }
+                        }
+                      },
+                      "example": {
+                          "message": "Failed Set Presensi"                   
+                      }
+                    }
+                  }
+              },
+              "500" : {
+                "description":"Error Servers",
+                "content":{
+                  "application/json":{
+                    "schema":{
+                      "type": "object",
+                      "properties":{
+                        "message":{
+                          "type":"boolean"
+                        }
+                      }
+                    },
+                    "example": {
+                      "statusCode" : "500",
+                      "message": "Some error occurred while creating the presensi."                   
+                    }
+                  }
+                }
+              }
+            }
+          } 
+      }
+    },
+    "components": {
+      "securitySchemes": {
+        "RegisterAuth":{
+          "description": "Authentication For Register",
+          "type": "apiKey",
+          "in": "header",
+          "name": "X-API-Key"
+        },
+        "LoginAuth":{
+          "description": "Authentication For Login",
+          "type": "apiKey",
+          "in": "header",
+          "name": "X-API-Key"
+        },
+        "MyProfileAuth":{
+          "description": "Authentication For My Profile",
+          "type": "apiKey",
+          "in": "header",
+          "name": "X-API-Key"
+        },
+        "ProfilDosenAuth":{
+          "description": "Authentication For Profile Dosen",
+          "type": "apiKey",
+          "in": "header",
+          "name": "X-API-Key"
+        },
+        "PerkuliahanAuth":{
+          "description": "Authentication For Perkuliahan",
+          "type": "apiKey",
+          "in": "header",
+          "name": "X-API-Key"
+        }
+      },
+      "parameters": {
+        "GetProgramStudi-id":{
+          "name": ":id",
+          "in": "query",
+          "required": true,
+          "description": "Get Program Studi By Program Studi Id",
+          "schema":{
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+          },
+          "examples":{
+              "1": {
+                  "value" : "Teknik Komputer"
+              },
+              "2": {
+                  "value" : "Manajemen Informatika"
+              },
+              "3": {
+                  "value" : "Teknologi Rekaya Perangkat Lunak"
+              }
+          }
+        },
+        "GetClass-id":{
+            "name": ":id",
+            "in": "query",
+            "required": true,
+            "description": "Get Class By Id",
+            "schema":{
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 100
+            },
+            "examples":{
+                "1" : {
+                  "value" : "Teknik Komputer I A"
+                },
+                "2" : {
+                  "value" : "Teknik Komputer I B"
+                },
+                "3" : {
+                  "value" : "Teknik Komputer II A"
+                },
+                "4" : {
+                  "value" : "Teknik Komputer II B"
+                },
+                "5" : {
+                  "value" : "Teknik Komputer III A"
+                },
+                "6" : {
+                  "value" : "Teknik Komputer III B"
+                },
+                "7" : {
+                  "value" : "Manajemen Informatika I A"
+                },
+                "8" : {
+                  "value" : "Manajemen Informatika I B"
+                },
+                "9" : {
+                  "value" : "Manajemen Informatika I C" 
+                },
+                "10" : {
+                  "value" : "Manajemen Informatika II A" 
+                },
+                "11" : {
+                  "value" : "Manajemen Informatika II B"
+                },
+                "12" : {
+                  "value" : "Manajemen Informatika II C"
+                },
+                "13" : {
+                  "value" : "Manajemen Informatika III A"
+                },
+                "14" : {
+                  "value" : "Manajemen Informatika III B"
+                },
+                "15" : {
+                  "value" : "Manajemen Informatika III C"
+                },
+                "16" : {
+                  "value" : "Teknologi Rekayasa Perangkat Lunak I A"
+                },
+                "17" : {
+                  "value" : "Teknologi Rekayasa Perangkat Lunak I B"
+                },
+                "18" : {
+                  "value" : "Teknologi Rekayasa Perangkat Lunak I C"
+                },
+                "19" : {
+                  "value" : "Teknologi Rekayasa Perangkat Lunak I D"
+                },
+                "20" : {
+                  "value" : "Teknologi Rekayasa Perangkat Lunak II A"
+                },
+                "21" : {
+                  "value" : "Teknologi Rekayasa Perangkat Lunak II B"
+                },
+                "22" : {
+                  "value" : "Teknologi Rekayasa Perangkat Lunak II C"
+                },
+                "23" : {
+                  "value" : "Teknologi Rekayasa Perangkat Lunak II D"
+                },
+                "24" : {
+                  "value" : "Teknologi Rekayasa Perangkat Lunak III A"
+                },
+                "25" : {
+                  "value" : "Teknologi Rekayasa Perangkat Lunak III B"
+                },
+                "26" : {
+                  "value" : "Teknologi Rekayasa Perangkat Lunak III C"
+                },
+                "27" : {
+                  "value" : "Teknologi Rekayasa Perangkat Lunak IV A"
+                },
+                "28" : {
+                  "value" : "Teknologi Rekayasa Perangkat Lunak IV B"
+                },
+                "29" : {
+                  "value" : "Teknologi Rekayasa Perangkat Lunak IV C"
+                }
+            }
+        },
+        "GetMyProfile-ID": {
+          "name" : ":id",
+          "in": "query",
+          "required": true,
+          "description": "Get My Profile By ID",
+          "schema": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "examples": {
+            "1" : {
+              "value" : "Sulis Tiyah"
+            },
+            "2":{
+              "value": "Aldo Spama Putra Suir"
+            },
+            "3": {
+              "value": "Jawahiir Abdillah"
+            }
+          }
+        },
+        "EditProfil_ID":{
+          "name": ":id",
+          "in": "query",
+          "required": true,
+          "description": "Update Profile",
+          "schema":{
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "examples": {
+            "1" : {
+              "value" : "Sulis Tiyah"
+            },
+            "2":{
+              "value": "Aldo Spama Putra Suir"
+            },
+            "3": {
+              "value": "Jawahiir Abdillah"
+            }
+          }
+        },
+        "ChangePassword-Id":{
+          "name": ":id",
+          "in": "query",
+          "required": true,
+          "description": "Change Password",
+          "schema":{
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "examples": {
+            "1" : {
+              "value" : "Sulis Tiyah"
+            },
+            "2":{
+              "value": "Aldo Spama Putra Suir"
+            },
+            "3": {
+              "value": "Jawahiir Abdillah"
+            }
+          }
+        },
+        "UpdateAvatar":{
+          "name": ":id",
+          "in": "query",
+          "required": true,
+          "description": "Update Avatar",
+          "schema":{
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "examples": {
+            "1" : {
+              "value" : "Sulis Tiyah"
+            },
+            "2":{
+              "value": "Aldo Spama Putra Suir"
+            },
+            "3": {
+              "value": "Jawahiir Abdillah"
+            }
+          }
+        },
+        "SetPresensi":{
+          "name": ":id",
+          "in": "query",
+          "required": true,
+          "description": "Set Presensi",
+          "schema":{
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "examples": {
+            "1" : {
+              "value" : "Sulis Tiyah"
+            },
+            "2":{
+              "value": "Aldo Spama Putra Suir"
+            },
+            "3": {
+              "value": "Jawahiir Abdillah"
+            }
+          }
+        }
+      },
+      "schemas": {
+        "ProgramStudi": {
+            "type": "object",
+            "properties": {
+                "message" : {
+                    "type": "string"
+                },
+                "data":{
+                    "type": "array",
+                    "items":{
+                        "type": "string"
+                    }
+                }
+                           
+            }
+        },
+        "Kelas": {
+            "type": "object",
+            "properties": {
+                "message" : {
+                    "type": "string"
+                },
+                "data":{
+                    "type": "array",
+                    "items":{
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "RegisterParams":{
+          "type": "object",
+          "properties": {
+            "nim":{
+              "type": "number",
+              "format": "int32"
+            },
+            "nama_lengkap":{
+              "type": "string"            
+            },
+            "program_studi":{
+              "type": "array",
+              "items":{
+                "type": "string"
+              }
+            },
+            "kelas":{
+                "type": "array",
+                "items":{
+                  "type": "string"
+                }
+            },
+            "no_telepon":{
+                "type": "number",
+                "format": "int32"
+            },
+            "password":{
+                "type": "string"            
+            }
+          }
+        },
+        "Register": {
+          "type": "object",
+          "properties": {
+              "message" : {
+                  "type": "string"
+              },
+              "data":{
+                  "type": "array",
+                  "items":{
+                      "type": "string"
+                  }
+              }
+          }
+        },
+        "LoginParams":{
+          "type": "object",
+          "properties": {
+            "nim":{
+                "type": "number",
+                "format": "int32"
+            },
+            "password":{
+                "type": "string"            
+            }
+          }
+        },
+        "Login": {
+          "type": "object",
+          "properties": {
+              "message" : {
+                  "type": "string"
+              },
+              "data":{
+                  "type": "array",
+                  "items":{
+                      "type": "string"
+                  }
+              }
+          }
+        },
+        "ProfileDosen": {
+          "type": "object",
+          "properties": {
+              "message" : {
+                  "type": "string"
+              },
+              "data":{
+                  "type": "array",
+                  "items":{
+                      "type": "string"
+                  }
+              }
+          }
+        },
+        "MyProfile": {
+          "type": "object",
+          "properties": {
+              "message" : {
+                  "type": "string"
+              },
+              "data":{
+                  "type": "array",
+                  "items":{
+                      "type": "string"
+                  }
+              }
+          }
+        },
+        "EditProfilParams":{
+          "type": "object",
+          "properties": {
+            "nama_lengkap":{
+              "type": "string"
+            },
+            "nim":{
+              "type": "integer"
+            },
+            "program_studi":{
+              "type": "string"
+            },
+            "kelas":{
+              "type": "string"
+            },
+            "no_telepon":{
+              "type": "integer"
+            }
+          }
+        },
+        "EditProfil":{
+          "type": "object",
+          "properties": {
+              "message" : {
+                  "type": "string"
+              },
+              "data":{
+                  "type": "array",
+                  "items":{
+                      "type": "string"
+                  }
+              }
+          }
+        },
+        "ChangePasswordParams":{
+          "type": "object",
+          "properties": {
+            "password":{
+              "type": "integer"
+            },
+            "newPassword":{
+              "type": "integer"
+            },
+            "confirmPassword":{
+              "type": "integer"
+            }
+          }
+        },
+        "ChangePassword":{
+          "type": "object",
+          "properties": {
+              "message" : {
+                  "type": "string"
+              },
+              "data":{
+                  "type": "array",
+                  "items":{
+                      "type": "string"
+                  }
+              }
+          }
+        },
+        "MyAvatar": {
+          "type": "object",
+          "properties": {
+              "message" : {
+                  "type": "string"
+              },
+              "data":{
+                  "type": "array",
+                  "items":{
+                      "type": "string"
+                  }
+              }
+          }
+        },
+        "SetPresensiParams":{
+          "type": "object",
+          "properties": {
+            "nim":{
+              "type": "integer"
+            },
+            "image":{
+              "type": "integer"
+            }
+          }
+        },
+        "SetPresensi":{
+          "type": "object",
+          "properties": {
+              "message" : {
+                  "type": "string"
+              },
+              "data":{
+                  "type": "array",
+                  "items":{
+                      "type": "string"
+                  }
+              }
+          }
+        }
+      }
+    }
+  }
