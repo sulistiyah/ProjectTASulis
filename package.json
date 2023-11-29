@@ -8,13 +8,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sulistiyah/PressTI.git"
+    "url": "https://github.com/sulistiyah/ProjectTASulis.git"
   },
   "author": "Sulis Tiyah",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/sulistiyah/PressTI/issues"
+    "url": "https://github.com/sulistiyah/ProjectTASulis/issues"
   },
-  "homepage": "https://github.com/sulistiyah/PressTI#readme"
+  "homepage": "https://github.com/sulistiyah/ProjectTASulis#readme"
 
 }

@@ -34,18 +34,18 @@ services:
       - backend
       - frontend
 
-  server-ui:
-    depends_on:
-      - server-api
-    build:
-      context: ./server-ui
-      dockerfile: Dockerfile
-      args:
-        - REACT_APP_API_BASE_URL=$CLIENT_API_BASE_URL
-    ports:
-      - ${REACT_LOCAL_PORT}:${REACT_DOCKER_PORT}
-    networks:
-      - frontend  
+  # server-ui:
+  #   depends_on:
+  #     - server-api
+  #   build:
+  #     context: ./server-ui
+  #     dockerfile: Dockerfile
+  #     args:
+  #       - REACT_APP_API_BASE_URL=$CLIENT_API_BASE_URL
+  #   ports:
+  #     - ${REACT_LOCAL_PORT}:${REACT_DOCKER_PORT}
+  #   networks:
+  #     - frontend  
 
 volumes: 
   db:
